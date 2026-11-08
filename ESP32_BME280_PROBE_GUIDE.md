@@ -94,7 +94,7 @@ In **Arduino IDE**, open **Library Manager** (`Cmd + Shift + I` on macOS or `Ctr
 ## 🐍 MicroPython Option
 
 If your ESP32 is flashed with MicroPython:
-1. Upload [esp32_bme280_probe_micropython.py](file://~/Downloads/AP%20MICRO%20CODE/esp32_bme280_probe_micropython.py) to your ESP32 using Thonny IDE or `mpremote`.
+1. Upload [esp32_bme280_probe_micropython.py](esp32_bme280_probe_micropython.py) to your ESP32 using Thonny IDE or `mpremote`.
 2. The script includes a self-contained, zero-dependency BME280 driver with automatic I2C address detection (`0x76`/`0x77`), altitude calculation, dew point estimation, and min/max telemetry streaming over REPL.
 
 ---

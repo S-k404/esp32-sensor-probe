@@ -1,18 +1,45 @@
+<!-- datasheet:banner -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/banner-dark.svg">
+    <img src=".github/assets/banner-light.svg" alt="ESP32 Sensor Probe: Environmental sensor suite: ESP32 with a BME280 and an ST7789 IPS screen, plus an Arduino Uno with a DHT22 and an OLED." width="100%">
+  </picture>
+</p>
+<!-- /datasheet:banner -->
+
 # Sensor & Display Test Projects
 
-## 🌡️ [ESP32 + BME280 + 1.14" (135x240 RGB IPS) Temperature Probe](file://~/Downloads/AP%20MICRO%20CODE/ESP32_BME280_PROBE_GUIDE.md)
+<!-- datasheet:figure -->
+## At a glance
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/diagram-dark.svg">
+    <img src=".github/assets/diagram-light.svg" alt="Block diagram: two sensor probes" width="100%">
+  </picture>
+</p>
+
+| Characteristic | Detail |
+| --- | --- |
+| **ESP32 probe** | BME280 on an ESP32 driving a 1.14" 135×240 RGB IPS (ST7789); multi-mode temperature and environment readout |
+| **Firmware** | Arduino sketch `esp32_bme280_probe` or MicroPython `esp32_bme280_probe_micropython.py` |
+| **Uno probe** | DHT22 and a 0.96" I²C OLED on an Arduino Uno; `i2c_scanner.ino` finds the OLED address (`0x3C` or `0x3D`) |
+| **Guide** | Wiring and setup in [`ESP32_BME280_PROBE_GUIDE.md`](ESP32_BME280_PROBE_GUIDE.md) |
+<!-- /datasheet:figure -->
+
+## 🌡️ [ESP32 + BME280 + 1.14" (135x240 RGB IPS) Temperature Probe](ESP32_BME280_PROBE_GUIDE.md)
 A precision, multi-mode digital temperature probe and environmental monitor running on **ESP32** with a **BME280** sensor and a **1.14" 135x240 RGB IPS screen (ST7789)**.
-- **Arduino Firmware**: [`esp32_bme280_probe/esp32_bme280_probe.ino`](file://~/Downloads/AP%20MICRO%20CODE/esp32_bme280_probe/esp32_bme280_probe.ino) (or [`esp32_bme280_probe.ino`](file://~/Downloads/AP%20MICRO%20CODE/esp32_bme280_probe.ino))
-- **MicroPython Script**: [`esp32_bme280_probe_micropython.py`](file://~/Downloads/AP%20MICRO%20CODE/esp32_bme280_probe_micropython.py)
-- **Wiring & Manual**: [ESP32_BME280_PROBE_GUIDE.md](file://~/Downloads/AP%20MICRO%20CODE/ESP32_BME280_PROBE_GUIDE.md)
+- **Arduino Firmware**: [`esp32_bme280_probe/esp32_bme280_probe.ino`](esp32_bme280_probe/esp32_bme280_probe.ino) (or [`esp32_bme280_probe.ino`](esp32_bme280_probe.ino))
+- **MicroPython Script**: [`esp32_bme280_probe_micropython.py`](esp32_bme280_probe_micropython.py)
+- **Wiring & Manual**: [ESP32_BME280_PROBE_GUIDE.md](ESP32_BME280_PROBE_GUIDE.md)
 
 ---
 
 # Arduino Uno: DHT22 Sensor + 0.96" I2C OLED Test
 
 ## 📁 Primary Code
-- **[arduino_uno_dht22_oled.ino](file://~/Downloads/AP%20MICRO%20CODE/arduino_uno_dht22_oled.ino)**: Specially crafted and memory-optimized for the Arduino Uno.
-- **[i2c_scanner.ino](file://~/Downloads/AP%20MICRO%20CODE/i2c_scanner.ino)**: Diagnostic sketch to check I2C communication and find your OLED address (`0x3C` vs `0x3D`).
+- **[weather_station.ino](weather_station/weather_station.ino)**: Specially crafted and memory-optimized for the Arduino Uno.
+- **[i2c_scanner.ino](i2c_scanner.ino)**: Diagnostic sketch to check I2C communication and find your OLED address (`0x3C` vs `0x3D`).
 
 ---
 
@@ -51,7 +78,7 @@ Open your **Arduino IDE** and go to **Tools** > **Manage Libraries...** (`Ctrl +
 
 ## 🚀 Steps to Upload to Arduino Uno
 1. Connect your Arduino Uno to your computer via USB.
-2. Open **[arduino_uno_dht22_oled.ino](file://~/Downloads/AP%20MICRO%20CODE/arduino_uno_dht22_oled.ino)** in Arduino IDE.
+2. Open **[weather_station.ino](weather_station/weather_station.ino)** in Arduino IDE.
 3. In the menu:
    - **Tools > Board** -> Select **Arduino Uno**.
    - **Tools > Port** -> Select your Arduino Uno USB port.
@@ -64,3 +91,7 @@ Open your **Arduino IDE** and go to **Tools** > **Manage Libraries...** (`Ctrl +
 - The Arduino Uno (ATmega328P) has **2 KB (2048 bytes) of SRAM**.
 - A 128x64 monochrome OLED buffer takes **1024 bytes (50%)** of that memory.
 - `arduino_uno_dht22_oled.ino` uses the `F()` macro for all printed strings to store text in Flash program memory instead of consuming precious SRAM, ensuring rock-solid stability without random resets or heap exhaustion.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
